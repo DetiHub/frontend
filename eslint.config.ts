@@ -7,7 +7,7 @@ import react from "eslint-plugin-react";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ["dist", "*.config.ts"] },
   ...pluginQuery.configs["flat/recommended"],
   {
     extends: [
