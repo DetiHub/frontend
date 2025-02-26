@@ -24,7 +24,7 @@ export default function TeamSection() {
     setActiveTeam(team)
 
     //set a offset to scroll to the top of the section
-    const offset = 100
+    const offset = 150
     sectionRefs.current[team]?.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
