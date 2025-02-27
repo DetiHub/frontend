@@ -39,7 +39,7 @@ function TeamContent({ team, leaders, collaborators }: TeamContentProps) {
           <span className="rounded-full bg-[#84cc16] px-6 py-1 text-2xl font-semibold font-medium text-white">{team}</span>
         </h2>
       </div>
-      <div className="flex-grow flex flex-col justify-start p-6 space-y-8">
+      <div className="flex-grow flex flex-col justify-start p-4 space-y-8">
         {/* Team Leaders Section */}
         <div className="space-y-4 text-center flex-grow flex flex-col justify-center">
           {showTeamLeadersTitle && (
