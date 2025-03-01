@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute("/")({
 
 function Index() {
   return (
-    <div className="p-16 bg-gradient-to-t ">
+    <div className="p-16">
       <TeamSection />
     </div>
   );
