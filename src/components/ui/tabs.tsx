@@ -50,7 +50,7 @@ export const Tabs = ({
 
   return (
     <>
-      <ScrollArea className="w-full max-w-full">
+      <ScrollArea className="w-full max-w-full h-16">
         <div
           ref={tabsRef}
           className={cn(
@@ -64,7 +64,7 @@ export const Tabs = ({
               onClick={() => moveSelectedTabToTop(idx)}
               onMouseEnter={() => setHovering(true)}
               onMouseLeave={() => setHovering(false)}
-              className={cn("relative px-4 py-2 rounded-full whitespace-nowrap flex-shrink-0", tabClassName)}
+              className={cn("relative px-4 py-2 rounded-full whitespace-nowrap flex-shrink-0 ", tabClassName)}
               style={{ transformStyle: "preserve-3d" }}
               data-active={active.value === tab.value}
             >
@@ -86,7 +86,7 @@ export const Tabs = ({
         active={active}
         key={active.value}
         hovering={hovering}
-        className={cn("mt-12", contentClassName)}
+        className={cn("mt-12 rounded-2xl", contentClassName)}
       />
     </>
   )
@@ -119,7 +119,7 @@ export const FadeInDiv = ({
             y: idx === 0 ? [0, 40, 0] : 0,
           }}
           className={cn(
-            "w-full h-full absolute top-0 left-0 bg-opacity-10 backdrop-filter backdrop-blur-3xl",
+            "w-full h-full absolute top-0 left-0 backdrop-filter backdrop-blur-3xl",
             className,
           )}
         >
