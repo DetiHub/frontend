@@ -1,6 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-
 import { HomepageCard } from "@/components/HomepageCard";
 
 export const Route = createLazyFileRoute("/")({
@@ -45,13 +44,40 @@ function Index() {
 
   useEffect(() => {
     if (sectionRefs.current[currentSection]) {
-      sectionRefs.current[currentSection].scrollIntoView({ behavior: "smooth", block: "start" });
+      sectionRefs.current[currentSection].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   }, [currentSection]);
 
   return (
     <div className="">
-      <div ref={(el) => { sectionRefs.current[0] = el!; }} className="p-16 h-screen section">
+      <div
+        ref={(el) => {
+          sectionRefs.current[0] = el!;
+        }}
+        className="section h-screen p-16"
+      >
+        <div className="flex h-full">
+          <div className="flex flex-[6] items-center justify-center">
+            <img
+              src="/logo_vertical_cores.png"
+              alt="Logo"
+              className="max-w-[75%]"
+            />
+          </div>
+          <div className="flex flex-[3] items-center">
+            <HomepageCard setCurrentSection={setCurrentSection} />
+          </div>
+        </div>
+      </div>
+      <div
+        ref={(el) => {
+          sectionRefs.current[1] = el!;
+        }}
+        className="section h-screen p-16"
+      >
         <div className="flex h-full justify-center">
           <div className="flex-1">
             <p>logo placeholder</p>
@@ -61,17 +87,12 @@ function Index() {
           </div>
         </div>
       </div>
-      <div ref={(el) => { sectionRefs.current[1] = el!; }} className="p-16 h-screen section">
-        <div className="flex h-full justify-center">
-          <div className="flex-1">
-            <p>logo placeholder</p>
-          </div>
-          <div className="flex-1">
-            <HomepageCard setCurrentSection={setCurrentSection} />
-          </div>
-        </div>
-      </div>
-      <div ref={(el) => { sectionRefs.current[2] = el!; }} className="p-16 h-screen section">
+      <div
+        ref={(el) => {
+          sectionRefs.current[2] = el!;
+        }}
+        className="section h-screen p-16"
+      >
         <div className="flex h-full justify-center">
           <div className="flex-1">
             <p>logo placeholder</p>
@@ -84,4 +105,3 @@ function Index() {
     </div>
   );
 }
-
