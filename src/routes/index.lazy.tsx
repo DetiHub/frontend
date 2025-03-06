@@ -1,4 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
+import TeamSection from "@/components/teams";
 import { useEffect, useRef, useState } from "react";
 import { HomepageCard } from "@/components/HomepageCard";
 
