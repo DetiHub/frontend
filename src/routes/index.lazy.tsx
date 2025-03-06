@@ -62,7 +62,7 @@ function Index() {
         <div className="flex h-full">
           <div className="flex flex-[6] items-center justify-center">
             <img
-              src="/logo_vertical_cores.png"
+              src="/logo_vertical_cores.svg"
               alt="Logo"
               className="max-w-[75%]"
             />
