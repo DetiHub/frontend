@@ -15,14 +15,15 @@ function Index() {
   const scheduleRef = useRef<HTMLDivElement>(null);
 
   const scrollToScheduleSection = () => {
-    if (scheduleRef.current) {
-      scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    // if (scheduleRef.current) {
+    //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
+    // }
   };
+  
   return (  
     <>
       <Waves
-        lineColor="rgba(10, 10, 10, 0.51)"
+        lineColor="rgba(44, 44, 44, 0.62)"
         backgroundColor="rgba(255, 255, 255, 0.2)"
         waveSpeedX={0.03}
         waveSpeedY={0.01}
@@ -40,24 +41,24 @@ function Index() {
         style={{
           background: `
               radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(0,0,0,0) 100%),
-              radial-gradient(77.85% 61.24% at 20.08% 75.48%, #92d400 0%, rgba(0,0,0,0) 100%)
+              radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
             `,
         }}>
         <Section>
-          <div className="flex flex-[6] items-center justify-center">
+          <div className="flex flex-[6] h-full max-w-full items-center justify-center">
             <img
-              src="/logo_vertical_cores.svg"
+              src="/logo_vertical_cores-crop.svg"
               alt="Logo"
-              className="max-w-[75%]"
             />
           </div>
-          <div className="flex flex-[3] items-center h-full">
+          <div className="flex flex-[3] items-center min-h-full">
             <HomepageCard />
           </div>
         </Section>        
-        <Section>
+        {/* <Section>
+          <div ref={scheduleRef} />
           <TeamSection />
-        </Section>
+        </Section> */}
         {/* <Section>
           test
         </Section> */}

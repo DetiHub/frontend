@@ -4,86 +4,86 @@ export const sponsorsData: ISponsorsData = {
     sponsors: [
         {
             name: "InovaRia Agenda MicroEletrónica",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/inovaria.png",
+            url: "https://inova-ria.pt/",
             rank: 0
         },
         {
             name: "Siroco",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/siroco.svg",
+            url: "https://siroco.com.pt/pt-pt/",
             rank: 1
         },
         {
             name: "Withus",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/withus.png",
+            url: "https://www.withus.pt",
             rank: 1
         },
         {
             name: "Genius Partnership (InovaRia + AlticeLabs)",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/geniuspartner.png",
+            url: "https://www.alticelabs.com/",
             rank: 1
         },
         {
             name: "Accenture",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/accenture.png",
+            url: "https://www.accenture.com/pt-pt",
             rank: 2
         },
         {
             name: "Deloitte",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/deloitte.png",
+            url: "https://www.deloitte.com/pt/pt.html",
             rank: 2
         },
         {
             name: "CriticalSoftware",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/critical.png",
+            url: "https://criticalsoftware.com/en",
             rank: 2
         },
         {
             name: "Huf Portuguesa",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/huf.svg",
+            url: "https://www.huf-group.com/en",
             rank: 2
         },
         {
             name: "Spin & Turn",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/spin&turn.png",
+            url: "https://www.spinandturn.com/",
             rank: 2
         },
         {
             name: "PicAdvanced",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/pic.png",
+            url: "https://picadvanced.com/  ",
             rank: 2
         },
         {
             name: "AEROPROTECHNIK",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/aeroprotechnik.png",
+            url: "https://www.aeroprotechnik.com/",
             rank: 2
         },
         {
             name: "Dellent",
             logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            url: "https://dellentconsulting.com/",
             rank: 3
         },
         {
             name: "RetailConsult",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/retailconsult.svg",
+            url: "https://www.retail-consult.com/",
             rank: 3
         },
         {
             name: "Instituto Pedro Nunes",
-            logo: "/sponsors/dellent.png",
-            url: "https://www.google.com",
+            logo: "/sponsors/ipn.png",
+            url: "https://www.ipn.pt/",
             rank: 3
         }
     ]
