@@ -44,13 +44,14 @@ function Index() {
             `,
         }}>
         <Section>
-          <div className="flex flex-[6] h-full max-w-full items-center justify-center">
+          <div className="flex flex-[6] min-h-fit max-w-full items-center justify-center">
             <img
-              src="/logo_vertical_cores-crop.svg"
+              src="logo_vertical_cores-crop.svg"
               alt="Logo"
+              className="w-full"
             />
           </div>
-          <div className="flex flex-[3] items-center min-h-full">
+          <div className="flex flex-[3] items-center min-h-fit">
             <HomepageCard />
           </div>
         </Section>        

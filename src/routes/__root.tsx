@@ -6,7 +6,6 @@ export const Route = createRootRoute({
     <div className="h-full">
       {/* Navbar here */}
       <Outlet />
-      <TanStackRouterDevtools />
     </div>
   ),
 });

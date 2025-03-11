@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 
 export const HomepageCard = () => {
   const forms_url: string =
-    "https://docs.google.com/forms/d/1N3oOOqsKGLZGei0LfJV5X7Zy3hqSKxMlWWCjxOKAeek";
+    "https://forms.gle/G2USdGq1XtKdcTaR9";
   const eventLines = eventDescription.split("\n");
   return (
-    <div className="h-[85%] w-full rounded-md border border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-sm backdrop-filter">
+    <div className="w-full rounded-md border border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-sm backdrop-filter">
       <div className="flex h-full flex-col items-center justify-between p-4">
         <div className="px-8 pt-4">
           <h3 className="pb-2 text-center text-5xl font-semibold">
