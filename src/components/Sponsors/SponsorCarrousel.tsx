@@ -14,6 +14,7 @@ export default function SponsorCarrousel({ sponsors, right = true }: SponsorCarr
   const [ref, { width }] = useMeasure();
   const xTranslation = useMotionValue(0);
   const [measuredWidth, setMeasuredWidth] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useLayoutEffect(() => {
     // Set a timeout to ensure the width is measured correctly after the component has mounted
@@ -44,10 +45,22 @@ export default function SponsorCarrousel({ sponsors, right = true }: SponsorCarr
     return controls.stop;
   }, [width, xTranslation, right, sponsors.length]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const halfWidth = measuredWidth / 2;
 
   return (
-    <div className='relative overflow-hidden h-32 mask-fade' style={{ width: halfWidth }}>
+    <div className="relative overflow-hidden h-32 mask-fade" style={{ width: screenWidth < 640 ? screenWidth : halfWidth }}>
       <motion.div className='absolute flex gap-4' style={{ x: xTranslation }} ref={ref}>
         {[...sponsors, ...sponsors].map((sponsor, index) => (
           <SponsorCard key={index} sponsor={sponsor} />
