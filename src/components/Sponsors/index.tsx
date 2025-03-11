@@ -1,0 +1,41 @@
+import React from 'react';
+import { sponsorsData } from './data';
+import SponsorCarrousel from './SponsorCarrousel';
+
+export const Sponsors = () => {
+    const data = sponsorsData.sponsors;
+
+    const mainSponsor = data.filter((sponsor) => sponsor.rank === 0);
+    const goldSponsors = data.filter((sponsor) => sponsor.rank === 1);
+    const silverSponsors = data.filter((sponsor) => sponsor.rank === 2);
+    const bronzeSponsors = data.filter((sponsor) => sponsor.rank === 3);
+    return (
+        <div className="flex flex-col space-y-8">
+            <div className="flex flex-col justify-center items-center space-y-8">
+                <h1 className="text-4xl font-bold">Main Sponsor</h1>
+                <a href={mainSponsor[0].url} target="_blank" rel="noreferrer">
+                    <img src={mainSponsor[0].logo} alt={mainSponsor[0].name} />
+                </a>
+            </div>
+            <div className="flex flex-col justify-center items-center space-y-8">
+                <h1 className="text-4xl font-bold">Gold Sponsors</h1>
+                <div className="flex flex-row space-x-8">
+                    {goldSponsors.map((sponsor) => (
+                        <a href={sponsor.url} target="_blank" rel="noreferrer">
+                            <img src={sponsor.logo} alt={sponsor.name} />
+                        </a>
+                    ))}
+                </div>
+            </div>
+            <div>
+                <div className="flex flex-col items-center justify-center space-y-8">
+                    <h1 className="text-4xl font-bold">Silver & Bronze Sponsors</h1>
+                    <div className='flex flex-col space-y-2 w-full justify-center items-center'>
+                        <SponsorCarrousel sponsors={silverSponsors} />
+                        <SponsorCarrousel sponsors={bronzeSponsors} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}

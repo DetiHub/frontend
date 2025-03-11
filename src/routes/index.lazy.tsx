@@ -1,66 +1,49 @@
+import { useRef } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import TeamSection from "@/components/teams";
-import { useEffect, useRef, useState } from "react";
+
+import { TeamSection } from "@/components/Teams";
 import { HomepageCard } from "@/components/HomepageCard";
+import { Section } from "@/components/Section";
+import { Sponsors } from "@/components/Sponsors";
+import Waves from "@/components/Waves";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
 });
 
 function Index() {
-  const sectionRefs = useRef<HTMLDivElement[]>([]);
-  const [currentSection, setCurrentSection] = useState<number>(0);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const scheduleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleWheel = (event: WheelEvent) => {
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        if (event.deltaY > 0) {
-          // Scrolling down
-          if (currentSection < sectionRefs.current.length - 1) {
-            setCurrentSection((prev) => prev + 1);
-          }
-        } else {
-          // Scrolling up
-          if (currentSection > 0) {
-            setCurrentSection((prev) => prev - 1);
-          }
-        }
-      }, 100);
-    };
-
-    window.addEventListener("wheel", handleWheel);
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-    };
-  }, [currentSection]);
-
-  useEffect(() => {
-    if (sectionRefs.current[currentSection]) {
-      sectionRefs.current[currentSection].scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  const scrollToScheduleSection = () => {
+    if (scheduleRef.current) {
+      scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [currentSection]);
-
-  return (
-    <div className="">
-      <div
-        ref={(el) => {
-          sectionRefs.current[0] = el!;
-        }}
-        className="section h-screen p-16"
-      >
-        <div className="flex h-full">
+  };
+  return (  
+    <>
+      <Waves
+        lineColor="rgba(10, 10, 10, 0.51)"
+        backgroundColor="rgba(255, 255, 255, 0.2)"
+        waveSpeedX={0.03}
+        waveSpeedY={0.01}
+        waveAmpX={40}
+        waveAmpY={20}
+        friction={0.9}
+        tension={0.01}
+        maxCursorMove={0}
+        xGap={12}
+        yGap={12}
+        style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
+      />
+      <main
+        className="overflow-y-scroll h-screen"
+        style={{
+          background: `
+              radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(0,0,0,0) 100%),
+              radial-gradient(77.85% 61.24% at 20.08% 75.48%, #92d400 0%, rgba(0,0,0,0) 100%)
+            `,
+        }}>
+        <Section>
           <div className="flex flex-[6] items-center justify-center">
             <img
               src="/logo_vertical_cores.svg"
@@ -68,41 +51,20 @@ function Index() {
               className="max-w-[75%]"
             />
           </div>
-          <div className="flex flex-[3] items-center">
-            <HomepageCard setCurrentSection={setCurrentSection} />
+          <div className="flex flex-[3] items-center h-full">
+            <HomepageCard />
           </div>
-        </div>
-      </div>
-      <div
-        ref={(el) => {
-          sectionRefs.current[1] = el!;
-        }}
-        className="section h-screen p-16"
-      >
-        <div className="flex h-full justify-center">
-          <div className="flex-1">
-            <p>logo placeholder</p>
-          </div>
-          <div className="flex-1">
-            <HomepageCard setCurrentSection={setCurrentSection} />
-          </div>
-        </div>
-      </div>
-      <div
-        ref={(el) => {
-          sectionRefs.current[2] = el!;
-        }}
-        className="section h-screen p-16"
-      >
-        <div className="flex h-full justify-center">
-          <div className="flex-1">
-            <p>logo placeholder</p>
-          </div>
-          <div className="flex-1">
-            <HomepageCard setCurrentSection={setCurrentSection} />
-          </div>
-        </div>
-      </div>
-    </div>
+        </Section>        
+        <Section>
+          <TeamSection />
+        </Section>
+        {/* <Section>
+          test
+        </Section> */}
+        <Section>
+          <Sponsors />
+        </Section>
+      </main>
+    </>
   );
 }

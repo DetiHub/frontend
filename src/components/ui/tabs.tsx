@@ -195,7 +195,7 @@ export const FadeInDiv = ({
             y: idx === 0 ? [0, 40, 0] : 0,
           }}
           className={cn(
-            "w-full h-full absolute top-0 left-0 backdrop-filter backdrop-blur-3xl",
+            "w-full h-full absolute top-0 left-0 backdrop-filter backdrop-blur-xl shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)]",
             className,
           )}
         >
