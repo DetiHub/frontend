@@ -13,7 +13,7 @@ export const HomepageCard = () => {
       <div className="flex h-full flex-col items-center justify-between p-4">
         <div className="px-8 pt-4">
           <h3 className="pb-2 text-center text-5xl font-semibold">
-            Event Description
+            Descrição do Evento
           </h3>
           {eventLines.map((line) => (
             <p className="text-xl mb-4">{line}</p>
@@ -26,7 +26,7 @@ export const HomepageCard = () => {
           Schedule
         </Button> */}
         <Button asChild className="w-fit px-8 h-full text-2xl font-bold text-background bg-green-500 hover:bg-green-400">
-          <Link to={forms_url} >Submit CV</Link>
+          <Link to={forms_url} >Submeter CV</Link>
         </Button>
       </div>
     </div>

@@ -35,7 +35,7 @@ function Index() {
         yGap={12}
         style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
       />
-      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-25"></div>
+      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
       <main
         className="overflow-y-scroll h-screen"
         style={{

@@ -31,7 +31,7 @@ export const Sponsors = () => {
             </div>
             <div>
                 <div className="flex flex-col items-center justify-center space-y-8">
-                    <h1 className="text-2xl md:text-4xlfont-bold">Silver & Bronze Sponsors</h1>
+                    <h1 className="text-2xl  font-bold">Silver & Bronze Sponsors</h1>
                     <div className='flex flex-col space-y-2 justify-center items-center'>
                         <SponsorCarrousel sponsors={silverSponsors} />
                         <SponsorCarrousel sponsors={bronzeSponsors} right={false} />
