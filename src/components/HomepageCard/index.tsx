@@ -15,7 +15,7 @@ export const HomepageCard = () => {
           <h3 className="pb-2 text-center text-5xl font-semibold">
             Event Description
           </h3>
-          {eventLines.map((line, index) => (
+          {eventLines.map((line) => (
             <p className="text-xl mb-4">{line}</p>
         ))}
         </div>

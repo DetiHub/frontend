@@ -1,7 +1,6 @@
-import { useRef } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
-import { TeamSection } from "@/components/Teams";
+// import { TeamSection } from "@/components/Teams";
 import { HomepageCard } from "@/components/HomepageCard";
 import { Section } from "@/components/Section";
 import { Sponsors } from "@/components/Sponsors";
@@ -12,13 +11,13 @@ export const Route = createLazyFileRoute("/")({
 });
 
 function Index() {
-  const scheduleRef = useRef<HTMLDivElement>(null);
+  // const scheduleRef = useRef<HTMLDivElement>(null);
 
-  const scrollToScheduleSection = () => {
-    // if (scheduleRef.current) {
-    //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
-    // }
-  };
+  // const scrollToScheduleSection = () => {
+  //   // if (scheduleRef.current) {
+  //   //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   // }
+  // };
   
   return (  
     <>
