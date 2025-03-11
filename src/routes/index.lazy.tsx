@@ -18,8 +18,8 @@ function Index() {
   //   //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
   //   // }
   // };
-  
-  return (  
+
+  return (
     <>
       <Waves
         lineColor="rgba(44, 44, 44, 0.62)"
@@ -35,6 +35,7 @@ function Index() {
         yGap={12}
         style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
       />
+      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-25"></div>
       <main
         className="overflow-y-scroll h-screen"
         style={{
@@ -54,7 +55,7 @@ function Index() {
           <div className="flex flex-[3] items-center min-h-fit">
             <HomepageCard />
           </div>
-        </Section>        
+        </Section>
         {/* <Section>
           <div ref={scheduleRef} />
           <TeamSection />
