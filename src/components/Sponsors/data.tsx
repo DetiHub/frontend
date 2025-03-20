@@ -69,6 +69,18 @@ export const sponsorsData: ISponsorsData = {
             rank: 2
         },
         {
+            name: "Glintt Global",
+            logo: "sponsors/GG.png",
+            url: "https://www.glinttglobal.com/",
+            rank: 2
+        },
+        {
+            name: "Sky Portugal",
+            logo: "sponsors/skyportugal.png",
+            url: "https://www.sky.com/",
+            rank: 2
+        },
+        {
             name: "Dellent",
             logo: "sponsors/dellent.png",
             url: "https://dellentconsulting.com/",

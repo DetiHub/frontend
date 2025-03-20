@@ -5,6 +5,8 @@ import { HomepageCard } from "@/components/HomepageCard";
 import { Section } from "@/components/Section";
 import { Sponsors } from "@/components/Sponsors";
 import Waves from "@/components/Waves";
+import { EventSchedule } from "@/components/Schedule";
+import DETIPlant from "@/components/DETIPlant";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -22,7 +24,7 @@ function Index() {
   return (
     <>
       <Waves
-        lineColor="rgba(44, 44, 44, 0.62)"
+        lineColor="rgba(255, 255, 255, 0.8)"
         backgroundColor="rgba(255, 255, 255, 0.2)"
         waveSpeedX={0.03}
         waveSpeedY={0.01}
@@ -65,6 +67,12 @@ function Index() {
         </Section> */}
         <Section>
           <Sponsors />
+        </Section>
+        <Section>
+            <EventSchedule />
+        </Section>
+        <Section>
+          <DETIPlant />
         </Section>
       </main>
     </>
