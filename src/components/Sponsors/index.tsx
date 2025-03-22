@@ -14,7 +14,7 @@ export const Sponsors = () => {
             <div className="flex flex-col justify-center items-center space-y-16">
                 <h1 className="text-4xl font-bold">Main Sponsor</h1>
                 <a href={mainSponsor[0].url} target="_blank" rel="noreferrer">
-                    <img src={mainSponsor[0].logo} alt={mainSponsor[0].name} className='max-w-full h-auto' />
+                    <img src={mainSponsor[0].logo} alt={mainSponsor[0].name} className='max-w-[1300px] h-auto' />
                 </a>
             </div>
             <div className="flex flex-col justify-center items-center space-y-4">
