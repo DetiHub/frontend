@@ -182,6 +182,13 @@ export function EventSchedule() {
 
       {/* Event Details Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-md border-gray-100 bg-gray-600 bg-opacity-10 bg-clip-padding backdrop-blur-xl backdrop-filte text-white">
+          <div className="flex items-center justify-center py-10">
+            <h3 className="text-3xl font-bold">Brevemente...</h3>
+          </div>
+        </DialogContent>
+      </Dialog>
+      {/* <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-md bg-black text-white border-lime-500 max-w-[95vw] mx-auto">
           {selectedEvent && (
             <>
@@ -199,7 +206,6 @@ export function EventSchedule() {
               </DialogHeader>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                {/* Event details */}
                 <div className="md:col-span-2 space-y-4">
                   <div className="bg-black/50 p-4 rounded-lg border border-lime-500/50">
                     <h3 className="text-xl font-bold text-lime-400 mb-2">Descrição</h3>
@@ -214,9 +220,7 @@ export function EventSchedule() {
                   )}
                 </div>
 
-                {/* Image and logo area */}
                 <div className="space-y-4">
-                  {/* Person image placeholder */}
                   {selectedEvent.type === "palestra" && (
                     <div className="bg-gray-800 rounded-lg aspect-square flex items-center justify-center">
                       <div className="text-lime-400 text-center">
@@ -226,7 +230,6 @@ export function EventSchedule() {
                     </div>
                   )}
 
-                  {/* Company logo placeholder */}
                   {selectedEvent.company && (
                     <div className="bg-gray-800 rounded-lg p-4 flex items-center justify-center">
                       <div className="text-lime-400 text-center">
@@ -240,7 +243,7 @@ export function EventSchedule() {
             </>
           )}
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   )
 
