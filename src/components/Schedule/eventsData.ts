@@ -233,14 +233,14 @@ export const eventsData: Event[] = [
             rank: 2
         },
         {
-            name: "Synopsis",
-            logo: "sponsors/synopsis.svg",
+            name: "Synopsys",
+            logo: "sponsors/synopsys.svg",
             url: "https://www.synopsis.pt/",
             rank: 2
         },
         {
             name: "AeroProtechnik",
-            logo: "sponsors/aeroprotechnik.png",
+            logo: "sponsors/aeroprotechnik.svg",
             url: "https://www.aeroprotechnik.com/",
             rank: 2
         },
@@ -252,7 +252,7 @@ export const eventsData: Event[] = [
         },
         {
             name: "Huf Portuguesa",
-            logo: "sponsors/huf.svg",
+            logo: "sponsors/huf.png",
             url: "https://www.huf-group.com/en",
             rank: 2
         },
