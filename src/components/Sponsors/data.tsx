@@ -46,7 +46,7 @@ export const sponsorsData: ISponsorsData = {
         },
         {
             name: "Huf Portuguesa",
-            logo: "sponsors/huf.svg",
+            logo: "sponsors/huf.png",
             url: "https://www.huf-group.com/en",
             rank: 2
         },
@@ -64,20 +64,26 @@ export const sponsorsData: ISponsorsData = {
         },
         {
             name: "AEROPROTECHNIK",
-            logo: "sponsors/aeroprotechnik.png",
+            logo: "sponsors/aeroprotechnik.svg",
             url: "https://www.aeroprotechnik.com/",
             rank: 2
         },
         {
-            name: "Glintt Global",
-            logo: "sponsors/GG.png",
-            url: "https://www.glinttglobal.com/",
+            name: "Sky",
+            logo: "sponsors/sky.png",
+            url: "https://www.sky.com/",
             rank: 2
         },
         {
-            name: "Sky Portugal",
-            logo: "sponsors/skyportugal.png",
-            url: "https://www.sky.com/",
+            name: "Glintt Global",
+            logo: "sponsors/glinttglobal.png",
+            url: "https://www.glinttglobal.com/en/",
+            rank: 2
+        },
+        {
+            name: "Synopsys",
+            logo: "sponsors/synopsys.svg",
+            url: "https://www.synopsys.com/",
             rank: 2
         },
         {
