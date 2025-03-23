@@ -5,24 +5,41 @@ import { HomepageCard } from "@/components/HomepageCard";
 import { Section } from "@/components/Section";
 import { Sponsors } from "@/components/Sponsors";
 import Waves from "@/components/Waves";
+import { EventSchedule } from "@/components/Schedule";
+import DETIPlant from "@/components/DETIPlant";
+import { SectionIndicator } from "@/components/SectionIndicator";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
 });
 
-function Index() {
-  // const scheduleRef = useRef<HTMLDivElement>(null);
+const sections = [
+  "Início",
+  "Empresas",
+  "Horário",
+  "DETI"
+] as const;
 
-  // const scrollToScheduleSection = () => {
-  //   // if (scheduleRef.current) {
-  //   //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   // }
-  // };
+function Index() {
+  const inicioRef = useRef<HTMLDivElement>(null);
+  const empresasRef = useRef<HTMLDivElement>(null);
+  const horarioRef = useRef<HTMLDivElement>(null);
+  const detiRef = useRef<HTMLDivElement>(null);
+
+  const activeSection = useActiveSection(sections, {
+    inicioRef,
+    empresasRef,
+    horarioRef,
+    detiRef
+  });
 
   return (
     <>
       <Waves
-        lineColor="rgba(44, 44, 44, 0.62)"
+        lineColor="rgba(255, 255, 255, 0.8)"
         backgroundColor="rgba(255, 255, 255, 0.2)"
         waveSpeedX={0.03}
         waveSpeedY={0.01}
@@ -36,6 +53,7 @@ function Index() {
         style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
       />
       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
+      <SectionIndicator sections={sections} activeSection={activeSection} />
       <main
         className="overflow-y-scroll h-screen"
         style={{
@@ -44,16 +62,28 @@ function Index() {
               radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
             `,
         }}>
-        <Section>
-          <div className="flex flex-[6] h-full max-w-full items-center justify-center">
-            <img
-              src="logo_vertical_cores-crop.svg"
-              alt="Logo"
-              className="w-screen"
-            />
-          </div>
-          <div className="flex flex-[3] items-center min-h-fit">
-            <HomepageCard />
+        <Section ref={inicioRef} id="inicio">
+          <div className="flex flex-col md:flex-row w-full h-full">
+            <motion.div 
+              className="flex flex-[6] h-full max-w-full items-center justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <motion.img
+                src="logo_vertical_cores-crop.svg"
+                alt="Logo"
+                className="w-screen"
+                initial={{ y: -50 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              />
+            </motion.div>
+            <div className="flex flex-[3] items-center min-h-fit">
+              <HomepageCard />
+            </div>
           </div>
         </Section>
         {/* <Section>
@@ -63,8 +93,14 @@ function Index() {
         {/* <Section>
           test
         </Section> */}
-        <Section>
+        <Section ref={empresasRef} id="empresas">
           <Sponsors />
+        </Section>
+        <Section ref={horarioRef} id="horario">
+          <EventSchedule />
+        </Section>
+        <Section ref={detiRef} id="deti">
+          <DETIPlant />
         </Section>
       </main>
     </>
