@@ -10,6 +10,7 @@ import DETIPlant from "@/components/DETIPlant";
 import { SectionIndicator } from "@/components/SectionIndicator";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -54,23 +55,35 @@ function Index() {
       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
       <SectionIndicator sections={sections} activeSection={activeSection} />
       <main
-        className="overflow-y-scroll h-screen snap-y snap-mandatory"
+        className="overflow-y-scroll h-screen"
         style={{
           background: `
               radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(0,0,0,0) 100%),
               radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
             `,
         }}>
-        <Section ref={inicioRef} id="inicio" className="snap-start">
-          <div className="flex flex-[6] h-full max-w-full items-center justify-center">
-            <img
-              src="logo_vertical_cores-crop.svg"
-              alt="Logo"
-              className="w-screen"
-            />
-          </div>
-          <div className="flex flex-[3] items-center min-h-fit">
-            <HomepageCard />
+        <Section ref={inicioRef} id="inicio">
+          <div className="flex flex-col md:flex-row w-full h-full">
+            <motion.div 
+              className="flex flex-[6] h-full max-w-full items-center justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <motion.img
+                src="logo_vertical_cores-crop.svg"
+                alt="Logo"
+                className="w-screen"
+                initial={{ y: -50 }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              />
+            </motion.div>
+            <div className="flex flex-[3] items-center min-h-fit">
+              <HomepageCard />
+            </div>
           </div>
         </Section>
         {/* <Section>
@@ -80,13 +93,13 @@ function Index() {
         {/* <Section>
           test
         </Section> */}
-        <Section ref={empresasRef} id="empresas" className="snap-start">
+        <Section ref={empresasRef} id="empresas">
           <Sponsors />
         </Section>
-        <Section ref={horarioRef} id="horario" className="snap-start">
+        <Section ref={horarioRef} id="horario">
           <EventSchedule />
         </Section>
-        <Section ref={detiRef} id="deti" className="snap-start">
+        <Section ref={detiRef} id="deti">
           <DETIPlant />
         </Section>
       </main>

@@ -27,7 +27,11 @@ export const SectionIndicator = ({ sections, activeSection }: SectionIndicatorPr
   const handleClick = (section: SectionName) => {
     const element = document.getElementById(sectionToId[section]);
     if (element) {
-      element.scrollIntoView();
+      const elementTop = element.offsetTop;
+      window.scrollTo({
+        top: elementTop,
+        behavior: "smooth"
+      });
     }
   };
 
