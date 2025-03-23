@@ -13,24 +13,25 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
-import { eventsData, type Event } from "./eventsData"
+import { eventsData, type Event, sponsorsWednesday, sponsorsThursday, sponsorsInterviewMorningWednesday, sponsorsInterviewAfternoonWednesday } from "./eventsData"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
+import Waves  from "@/components/Waves"
 
 const eventIcons = {
-  credenciacao: <BadgeCheck className="w-8 h-8 text-black" />,
-  entrevistas: <MessageCircleQuestion className="w-8 h-8 text-black" />,
-  feira: <Users className="w-8 h-8 text-black" />,
-  palestra: <Presentation className="w-8 h-8 text-black" />,
-  jantar: <UtensilsCrossed className="w-8 h-8 text-black" />,
+  credenciacao: <BadgeCheck className="w-8 h-8 md:w-8 md:h-8 w-5 h-5 text-black" />,
+  entrevistas: <MessageCircleQuestion className="w-8 h-8 md:w-8 md:h-8 w-5 h-5 text-black" />,
+  feira: <Users className="w-8 h-8 md:w-8 md:h-8 w-5 h-5 text-black" />,
+  palestra: <Presentation className="w-8 h-8 md:w-8 md:h-8 w-5 h-5 text-black" />,
+  jantar: <UtensilsCrossed className="w-8 h-8 md:w-8 md:h-8 w-5 h-5 text-black" />,
 }
 
 const eventLabels = {
-  credenciacao: "credenciação",
-  entrevistas: "entrevistas",
-  feira: "feira de empresas",
-  palestra: "palestra",
-  jantar: "jantar empresarial",
+  credenciacao: "Credenciação",
+  entrevistas: "Entrevistas",
+  feira: "Feira de Empresas",
+  palestra: "Palestra",
+  jantar: "Jantar Empresarial",
 }
 
 // Process events to determine which ones should be full width
@@ -122,18 +123,23 @@ export function EventSchedule() {
           <div
             className={cn(
               "flex-shrink-0 w-16 border-l border-t border-b border-gray-100 bg-gray-600 bg-opacity-10 bg-clip-padding backdrop-blur-xl backdrop-filte text-white",
-              isMobile ? "rounded-l-xl" : "pt-[100px] rounded-l-xl",
+              isMobile ? "pt-[28px] rounded-l-xl" : "pt-[90px] rounded-l-xl",
             )}
           >
             {timeSlots.map((time) => (
-              <div key={time} className="h-14 flex items-center justify-start pl-4">
-                <span className="text-sm font-medium">{time}:00</span>
+              <div key={time} className={cn("flex items-center justify-start pl-4", 
+                isMobile ? "h-[48px]" : "h-[55px]"
+              )}>
+                <span className={cn("font-medium", isMobile ? "text-xs" : "text-sm")}>{time}:00</span>
               </div>
             ))}
           </div>
 
           {/* Main schedule */}
-          <div className="flex-grow relative overflow-hidden rounded-r-xl p-4 md:p-8 text-black border-t border-b border-r border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filte">
+          <div className={cn(
+            "flex-grow relative overflow-hidden rounded-r-xl text-black border-t border-b border-r border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter",
+            isMobile ? "p-2" : "p-4 md:p-8"
+          )}>
             {/* Desktop view - both days side by side */}
             {!isMobile && (
               <div className="grid grid-cols-2 gap-6">
@@ -148,7 +154,7 @@ export function EventSchedule() {
                       {day.label},<span className="text-white pl-2">{day.day}</span>
                     </motion.h2>
 
-                    <div className="relative grid grid-cols-4 gap-1 border border-white bg-lime-400/10 rounded-lg overflow-hidden">
+                    <div className="relative grid grid-cols-4 border border-white bg-lime-400/10 rounded-lg overflow-hidden">
                       {/* Horizontal grid lines */}
                       {timeSlots.map((time) => (
                         <div key={time} className="col-span-4 h-14 border-t border-dashed border-lime-200" />
@@ -165,10 +171,10 @@ export function EventSchedule() {
             {/* Mobile view - single day at a time */}
             {isMobile && (
               <div className="flex flex-col">
-                <div className="relative grid grid-cols-4 gap-1 border border-white bg-lime-400/10 rounded-lg overflow-hidden">
+                <div className="relative grid grid-cols-4 gap-1 border border-white bg-lime-400/10 rounded-lg overflow-hidden pt-[28px]">
                   {/* Horizontal grid lines */}
                   {timeSlots.map((time) => (
-                    <div key={time} className="col-span-4 h-14 border-t border-dashed border-lime-200" />
+                    <div key={time} className="col-span-4 h-[48px] border-t border-dashed border-lime-200" />
                   ))}
 
                   {/* Events */}
@@ -182,82 +188,209 @@ export function EventSchedule() {
 
       {/* Event Details Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-md border-gray-100 bg-gray-600 bg-opacity-10 bg-clip-padding backdrop-blur-xl backdrop-filte text-white">
-          <div className="flex items-center justify-center py-10">
-            <h3 className="text-3xl font-bold">Brevemente...</h3>
-          </div>
-        </DialogContent>
-      </Dialog>
-      {/* <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-md bg-black text-white border-lime-500 max-w-[95vw] mx-auto">
+        <DialogContent className="w-[95vw] max-h-[90vh] overflow-y-auto sm:max-w-5xl border-gray-100 text-black p-4 md:p-6"
+             style={{
+              background: `
+                  radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(255,255,255,1) 100%),
+                  radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(255,255,255,1) 100%)
+                `,
+            }}>
+          <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
+          <Waves
+            lineColor="rgba(255, 255, 255, 0.8)"
+            backgroundColor="rgba(255, 255, 255, 0.2)"
+            waveSpeedX={0.03}
+            waveSpeedY={0.01}
+            waveAmpX={40}
+            waveAmpY={20}
+            friction={0.9}
+            tension={0.01}
+            maxCursorMove={0}
+            xGap={12}
+            yGap={12}
+            style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
+        />
           {selectedEvent && (
-            <>
-              <DialogHeader>
-                <DialogTitle className={cn("text-lime-400 flex items-center gap-2", isMobile ? "text-xl" : "text-2xl")}>
-                  {eventIcons[selectedEvent.type]}
-                  {eventLabels[selectedEvent.type]}
-                  <span className="text-white text-lg ml-2">
-                    {selectedEvent.startTime}:00 - {selectedEvent.endTime}:00
-                  </span>
-                </DialogTitle>
-                <DialogDescription className="text-gray-300 text-lg">
-                  {days.find((d) => d.id === selectedEvent.day)?.label}
-                </DialogDescription>
-              </DialogHeader>
+            <div className="z-10">
+              {selectedEvent.type === "palestra" ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Left column - Main content */}
+                  <div className="space-y-4">
+                    <DialogHeader>
+                      <DialogTitle className={cn("flex flex-col md:flex-row items-start md:items-center gap-2", isMobile ? "text-xl" : "text-2xl")}>
+                        <div className="flex items-center gap-2">
+                          {eventIcons[selectedEvent.type]}
+                          {eventLabels[selectedEvent.type]}
+                        </div>
+                        <span className="text-black text-base md:text-lg md:ml-2">
+                          {selectedEvent.startTime}:00 - {selectedEvent.endTime}:00
+                        </span>
+                      </DialogTitle>
+                      <DialogDescription className="text-gray-600 text-base md:text-lg">
+                        {days.find((d) => d.id === selectedEvent.day)?.label}
+                      </DialogDescription>
+                    </DialogHeader>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div className="md:col-span-2 space-y-4">
-                  <div className="bg-black/50 p-4 rounded-lg border border-lime-500/50">
-                    <h3 className="text-xl font-bold text-lime-400 mb-2">Descrição</h3>
-                    <p className="text-gray-200">{selectedEvent.description ?? "Sem descrição disponível."}</p>
+                    <div className="space-y-4">
+                      <div className="p-4 rounded-lg border border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter">
+                        <h3 className="text-xl font-bold mb-2">Descrição</h3>
+                        <p className="text-gray-700">{selectedEvent.description ?? "Sem descrição disponível."}</p>
+                      </div>
+
+                      {selectedEvent.speaker && (
+                        <div className="p-4 rounded-lg border border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter">
+                          <h3 className="text-xl font-bold mb-2">Orador</h3>
+                          <p className="text-gray-700 font-semibold mb-1">{selectedEvent.speaker}</p>
+                          {selectedEvent.speakerDescription && (
+                            <p className="text-gray-600">{selectedEvent.speakerDescription}</p>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
-                  {selectedEvent.speaker && (
-                    <div className="bg-black/50 p-4 rounded-lg border border-lime-500/50">
-                      <h3 className="text-xl font-bold text-lime-400 mb-2">Palestrante</h3>
-                      <p className="text-gray-200">{selectedEvent.speaker}</p>
+                  {/* Right column - Company Logo */}
+                  <div className="flex items-stretch h-full">
+                    {selectedEvent.company && (
+                      <div className="w-full rounded-xl p-8 border border-gray-100 flex items-center justify-center bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter">
+                        <img
+                          src={selectedEvent.logo}
+                          alt={selectedEvent.company}
+                          className="w-full h-auto max-h-full object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                // Regular full-width layout for other event types
+                <div>
+                  <DialogHeader>
+                    <DialogTitle className={cn("flex flex-col md:flex-row items-start md:items-center gap-2", isMobile ? "text-xl" : "text-2xl")}>
+                      <div className="flex items-center gap-2">
+                        {eventIcons[selectedEvent.type]}
+                        {eventLabels[selectedEvent.type]}
+                      </div>
+                      <span className="text-black text-base md:text-lg md:ml-2">
+                        {selectedEvent.startTime}:00 - {selectedEvent.endTime}:00
+                      </span>
+                    </DialogTitle>
+                    <DialogDescription className="text-gray-600 text-base md:text-lg">
+                      {days.find((d) => d.id === selectedEvent.day)?.label}
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="space-y-4 mt-4">
+                    <div className="p-4 rounded-lg border border-gray-100 bg-gray-600 bg-opacity-10 hover:shadow-lg shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter">
+                      <h3 className="text-xl font-bold mb-2">Descrição</h3>
+                      <p className="text-gray-700">{selectedEvent.description ?? "Sem descrição disponível."}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Full width sections */}
+              {selectedEvent.type === "entrevistas" && (
+                <div className="mt-6 p-6 rounded-lg">
+                  <h3 className="text-2xl font-bold mb-6 text-center text-black">Empresas Participantes</h3>
+                  {selectedEvent.day === "wednesday" ? (
+                    selectedEvent.startTime < 15 ? (
+                      <div className="space-y-6">
+                        <div className="p-6 rounded-xl">
+                          <div className={cn(
+                            "grid gap-6",
+                            sponsorsInterviewMorningWednesday.sponsors.length === 2 
+                              ? "grid-cols-2 md:grid-cols-2 max-w-2xl mx-auto" 
+                              : "grid-cols-1 md:grid-cols-3"
+                          )}>
+                            {sponsorsInterviewMorningWednesday.sponsors.map((sponsor) => (
+                              <div key={sponsor.name} className="flex flex-col items-center gap-3 border border-gray-100 p-4 rounded-xl hover:shadow-lg transition-shadow bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter">
+                                <img 
+                                  src={sponsor.logo} 
+                                  alt={sponsor.name} 
+                                  className="w-32 h-32 object-contain" 
+                                  title={sponsor.name}
+                                />
+                                <p className="text-base font-medium text-gray-600">Sala {sponsor.room}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-6">
+                        <div className="p-6 rounded-xl">
+                          <div className={cn(
+                            "grid gap-6",
+                            sponsorsInterviewAfternoonWednesday.sponsors.length === 2 
+                              ? "grid-cols-2 md:grid-cols-2 max-w-2xl mx-auto" 
+                              : "grid-cols-1 md:grid-cols-3"
+                          )}>
+                            {sponsorsInterviewAfternoonWednesday.sponsors.map((sponsor) => (
+                              <div key={sponsor.name} className="flex flex-col items-center gap-3 border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter rounded-lg border p-4 hover:shadow-lg ">
+                                <img 
+                                  src={sponsor.logo} 
+                                  alt={sponsor.name} 
+                                  className="w-32 h-32 object-contain"
+                                  title={sponsor.name}
+                                />
+                                <p className="text-base font-medium text-gray-600">Sala {sponsor.room}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  ) : (
+                    <div className="flex items-center justify-center p-12">
+                      <p className="text-2xl font-medium text-gray-600">Brevemente</p>
                     </div>
                   )}
                 </div>
+              )}
 
-                <div className="space-y-4">
-                  {selectedEvent.type === "palestra" && (
-                    <div className="bg-gray-800 rounded-lg aspect-square flex items-center justify-center">
-                      <div className="text-lime-400 text-center">
-                        <Users className="w-12 h-12 mx-auto mb-2" />
-                        <p className="text-sm">Imagem do Palestrante</p>
+              {selectedEvent.type === "feira" && (
+                <div className="mt-6 p-4 text-center rounded-lg">
+                  <h3 className="text-xl font-bold mb-4">Empresas Participantes</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                    {selectedEvent.day === "wednesday" ? sponsorsWednesday.sponsors.slice(0, 10).map((sponsor) => (
+                      <div key={sponsor.name} className="flex flex-col items-center justify-center p-3 md:p-4 hover:shadow-lg border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter rounded-lg border">
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          className="w-28 h-28 md:w-28 md:h-28 object-contain"
+                        />
                       </div>
-                    </div>
-                  )}
-
-                  {selectedEvent.company && (
-                    <div className="bg-gray-800 rounded-lg p-4 flex items-center justify-center">
-                      <div className="text-lime-400 text-center">
-                        <BadgeCheck className="w-12 h-12 mx-auto mb-2" />
-                        <p className="text-sm">{selectedEvent.company}</p>
+                      )) : sponsorsThursday.sponsors.slice(0, 10).map((sponsor) => (
+                      <div key={sponsor.name} className="flex flex-col items-center justify-center p-3 md:p-4 hover:shadow-lg border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter rounded-lg border">
+                        <img
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          className="w-28 h-28 md:w-28 md:h-28 object-contain"
+                        />
                       </div>
-                    </div>
-                  )}
+                      ))}
+                  </div>
                 </div>
-              </div>
-            </>
+              )}
+            </div>
           )}
         </DialogContent>
-      </Dialog> */}
+      </Dialog>
     </div>
   )
 
   // Helper function to render an event
   function renderEvent(event: Event, isMobileView: boolean) {
-    const height = (event.endTime - event.startTime) * 56 // 14px per hour * 4 (for the grid)
-    const top = (event.startTime - 9) * 56 // Offset from 9:00
+    const height = (event.endTime - event.startTime) * (isMobileView ? 48 : 56) // Adjust height for mobile
+    const top = (event.startTime - 9) * (isMobileView ? 48 : 56) + (isMobileView ? 28 : 0) // Adjust top position for mobile
     const isClickable = clickableEventTypes.includes(event.type)
 
     return (
       <motion.div
         key={event.id}
         className={cn(
-          "absolute bg-lime-400/90 text-black rounded-md overflow-hidden shadow-lg",
+          "absolute bg-lime-400/90 border-lime-200 border text-black rounded-md overflow-hidden shadow-lg",
           hoveredEvent === event.id ? "z-10" : "z-0",
           isClickable ? "cursor-pointer" : "",
         )}
@@ -278,12 +411,15 @@ export function EventSchedule() {
         onMouseLeave={() => setHoveredEvent(null)}
         onClick={() => handleEventClick(event)}
       >
-        <div className="h-full flex flex-col items-center justify-center p-2">
+        <div className={cn(
+          "h-full flex flex-col items-center justify-center",
+          isMobileView ? "p-1" : "p-2"
+        )}>
           {eventIcons[event.type]}
           <div
             className={cn(
-              "mt-2 font-medium",
-              isMobileView ? "writing-mode-vertical-rl text-xs" : "text-sm text-center",
+              "font-medium text-center",
+              isMobileView ? "text-[10px] mt-1" : "text-sm mt-2",
             )}
           >
             {eventLabels[event.type]}

@@ -7,19 +7,33 @@ import { Sponsors } from "@/components/Sponsors";
 import Waves from "@/components/Waves";
 import { EventSchedule } from "@/components/Schedule";
 import DETIPlant from "@/components/DETIPlant";
+import { SectionIndicator } from "@/components/SectionIndicator";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { useRef } from "react";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
 });
 
-function Index() {
-  // const scheduleRef = useRef<HTMLDivElement>(null);
+const sections = [
+  "Início",
+  "Empresas",
+  "Horário",
+  "DETI"
+] as const;
 
-  // const scrollToScheduleSection = () => {
-  //   // if (scheduleRef.current) {
-  //   //   scheduleRef.current.scrollIntoView({ behavior: 'smooth' });
-  //   // }
-  // };
+function Index() {
+  const inicioRef = useRef<HTMLDivElement>(null);
+  const empresasRef = useRef<HTMLDivElement>(null);
+  const horarioRef = useRef<HTMLDivElement>(null);
+  const detiRef = useRef<HTMLDivElement>(null);
+
+  const activeSection = useActiveSection(sections, {
+    inicioRef,
+    empresasRef,
+    horarioRef,
+    detiRef
+  });
 
   return (
     <>
@@ -38,15 +52,16 @@ function Index() {
         style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
       />
       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
+      <SectionIndicator sections={sections} activeSection={activeSection} />
       <main
-        className="overflow-y-scroll h-screen"
+        className="overflow-y-scroll h-screen snap-y snap-mandatory"
         style={{
           background: `
               radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(0,0,0,0) 100%),
               radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
             `,
         }}>
-        <Section>
+        <Section ref={inicioRef} id="inicio" className="snap-start">
           <div className="flex flex-[6] h-full max-w-full items-center justify-center">
             <img
               src="logo_vertical_cores-crop.svg"
@@ -65,13 +80,13 @@ function Index() {
         {/* <Section>
           test
         </Section> */}
-        <Section>
+        <Section ref={empresasRef} id="empresas" className="snap-start">
           <Sponsors />
         </Section>
-        <Section>
-            <EventSchedule />
+        <Section ref={horarioRef} id="horario" className="snap-start">
+          <EventSchedule />
         </Section>
-        <Section>
+        <Section ref={detiRef} id="deti" className="snap-start">
           <DETIPlant />
         </Section>
       </main>
