@@ -336,7 +336,7 @@ export const sponsorsInterviewMorningWednesday: SponsorsInterviews = {
         },
         {
             name: "Synopsis",
-            logo: "sponsors/synopsis.svg",
+            logo: "sponsors/synopsys.svg",
             url: "https://www.synopsis.pt/",
             rank: 1,
             room: "4.2.06"

@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { eventDescription } from "./data";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -76,7 +75,7 @@ export const HomepageCard = () => {
           Schedule
         </Button> */}
           <Button asChild className="w-fit px-8 h-full text-2xl font-bold text-background bg-lime-500 hover:bg-lime-600">
-            <Link to={forms_url}>Submeter CV</Link>
+            <a href={forms_url} target="_blank" rel="noopener noreferrer">Submeter CV</a>
           </Button>
         </motion.div>
       </div>

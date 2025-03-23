@@ -6,7 +6,7 @@ import { Section } from "@/components/Section";
 import { Sponsors } from "@/components/Sponsors";
 import Waves from "@/components/Waves";
 import { EventSchedule } from "@/components/Schedule";
-import DETIPlant from "@/components/DETIPlant";
+//import DETIPlant from "@/components/DETIPlant";
 import { SectionIndicator } from "@/components/SectionIndicator";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { useRef } from "react";
@@ -30,10 +30,10 @@ function Index() {
   const detiRef = useRef<HTMLDivElement>(null);
 
   const activeSection = useActiveSection(sections, {
-    inicioRef,
-    empresasRef,
-    horarioRef,
-    detiRef
+    inicioRef: inicioRef as React.RefObject<HTMLDivElement>,
+    empresasRef: empresasRef as React.RefObject<HTMLDivElement>,
+    horarioRef: horarioRef as React.RefObject<HTMLDivElement>,
+    detiRef: detiRef as React.RefObject<HTMLDivElement>
   });
 
   return (
@@ -99,9 +99,9 @@ function Index() {
         <Section ref={horarioRef} id="horario">
           <EventSchedule />
         </Section>
-        <Section ref={detiRef} id="deti">
+        {/*<Section ref={detiRef} id="deti">
           <DETIPlant />
-        </Section>
+        </Section> */}
       </main>
     </>
   );

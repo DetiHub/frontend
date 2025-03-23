@@ -308,7 +308,7 @@ export function EventSchedule() {
                                 <img 
                                   src={sponsor.logo} 
                                   alt={sponsor.name} 
-                                  className="w-32 h-32 object-contain" 
+                                  className="w-48 h-32 object-contain" 
                                   title={sponsor.name}
                                 />
                                 <p className="text-base font-medium text-gray-600">Sala {sponsor.room}</p>
@@ -331,7 +331,7 @@ export function EventSchedule() {
                                 <img 
                                   src={sponsor.logo} 
                                   alt={sponsor.name} 
-                                  className="w-32 h-32 object-contain"
+                                  className="w-48 h-32 object-contain"
                                   title={sponsor.name}
                                 />
                                 <p className="text-base font-medium text-gray-600">Sala {sponsor.room}</p>
