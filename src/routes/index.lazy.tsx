@@ -11,6 +11,7 @@ import { SectionIndicator } from "@/components/SectionIndicator";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import { TeamSection } from "@/components/Teams";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -18,9 +19,9 @@ export const Route = createLazyFileRoute("/")({
 
 const sections = [
   "Início",
-  "Empresas",
   "Horário",
-  "DETI"
+  "DETI",
+  "Empresas"
 ] as const;
 
 function Index() {
@@ -31,9 +32,9 @@ function Index() {
 
   const activeSection = useActiveSection(sections, {
     inicioRef: inicioRef as React.RefObject<HTMLDivElement>,
-    empresasRef: empresasRef as React.RefObject<HTMLDivElement>,
     horarioRef: horarioRef as React.RefObject<HTMLDivElement>,
-    detiRef: detiRef as React.RefObject<HTMLDivElement>
+    detiRef: detiRef as React.RefObject<HTMLDivElement>,
+    empresasRef: empresasRef as React.RefObject<HTMLDivElement>
   });
 
   return (
@@ -61,7 +62,8 @@ function Index() {
               radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(0,0,0,0) 100%),
               radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
             `,
-        }}>
+        }}
+        id="main">
         <Section ref={inicioRef} id="inicio">
           <div className="flex flex-col md:flex-row w-full h-full">
             <motion.div 
@@ -86,22 +88,15 @@ function Index() {
             </div>
           </div>
         </Section>
-        {/* <Section>
-          <div ref={scheduleRef} />
-          <TeamSection />
-        </Section> */}
-        {/* <Section>
-          test
-        </Section> */}
-        <Section ref={empresasRef} id="empresas">
-          <Sponsors />
-        </Section>
         <Section ref={horarioRef} id="horario">
           <EventSchedule />
         </Section>
-        {/*<Section ref={detiRef} id="deti">
-          <DETIPlant />
-        </Section> */}
+        <Section ref={detiRef} id="deti">
+          <TeamSection />
+        </Section>
+        <Section ref={empresasRef} id="empresas">
+          <Sponsors />
+        </Section>
       </main>
     </>
   );

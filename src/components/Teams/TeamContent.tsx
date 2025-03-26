@@ -17,7 +17,7 @@ export function TeamContent({ team, leaders, collaborators }: TeamContentProps) 
           <h2 className="text-center">
             <span className="w-full rounded-full bg-primary px-6 py-1 text-2xl font-semibold text-white">{team}</span>
           </h2>
-          <div className="absolute top-1 right-5 text-white flex-row flex space-x-4">
+          <div className="absolute top-1 right-5 text-white flex-row flex space-x-4 hidden md:flex">
             <Minus/>
             <Square/>
             <X/>

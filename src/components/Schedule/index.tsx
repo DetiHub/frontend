@@ -73,7 +73,7 @@ export function EventSchedule() {
   }
 
   return (
-    <div className={cn("flex flex-col items-center w-full", isMobile ? "mx-0" : "m-32")}>
+    <div className={cn("flex flex-col items-center w-full", isMobile ? "mx-0" : "mx-32")}>
       {/* Title */}
       <motion.h1
         className={cn("font-bold mb-4 text-center", isMobile ? "text-3xl" : "text-6xl")}
@@ -123,12 +123,12 @@ export function EventSchedule() {
           <div
             className={cn(
               "flex-shrink-0 w-16 border-l border-t border-b border-gray-100 bg-gray-600 bg-opacity-10 bg-clip-padding backdrop-blur-xl backdrop-filte text-white",
-              isMobile ? "pt-[28px] rounded-l-xl" : "pt-[90px] rounded-l-xl",
+              isMobile ? "pt-[28px] rounded-l-xl" : "pt-[106px] rounded-l-xl",
             )}
           >
             {timeSlots.map((time) => (
               <div key={time} className={cn("flex items-center justify-start pl-4", 
-                isMobile ? "h-[48px]" : "h-[55px]"
+                isMobile ? "h-[48px]" : "h-[56px]"
               )}>
                 <span className={cn("font-medium", isMobile ? "text-xs" : "text-sm")}>{time}:00</span>
               </div>
@@ -188,14 +188,14 @@ export function EventSchedule() {
 
       {/* Event Details Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="w-[95vw] max-h-[90vh] overflow-y-auto sm:max-w-5xl border-gray-100 text-black p-4 md:p-6"
-             style={{
-              background: `
-                  radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(255,255,255,1) 100%),
-                  radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(255,255,255,1) 100%)
-                `,
-            }}>
-          <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
+        <DialogContent className="w-[95vw] max-h-[90vh] sm:max-w-5xl bg-background border-gray-100 text-black p-4 md:p-6"
+             >
+          <div className="fixed top-0 left-0 w-full h-full opacity-100" style={{
+            background: `
+            radial-gradient(120.85% 71.24% at 80.08% 1.48%, #92d400 0%, rgba(255, 255, 255, 0) 100%),
+            radial-gradient(77.85% 61.24% at 20.08% 98.48%, #92d400 0%, rgba(0,0,0,0) 100%)
+            `,
+          }}></div>
           <Waves
             lineColor="rgba(255, 255, 255, 0.8)"
             backgroundColor="rgba(255, 255, 255, 0.2)"
@@ -210,6 +210,7 @@ export function EventSchedule() {
             yGap={12}
             style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }}
         />
+          <div className="fixed top-0 left-0 w-full h-full bg-black opacity-20"></div>
           {selectedEvent && (
             <div className="z-10">
               {selectedEvent.type === "palestra" ? (
@@ -298,7 +299,7 @@ export function EventSchedule() {
                       <div className="space-y-6">
                         <div className="p-6 rounded-xl">
                           <div className={cn(
-                            "grid gap-6",
+                            "grid gap-6 overflow-y-auto max-h-[450px]",
                             sponsorsInterviewMorningWednesday.sponsors.length === 2 
                               ? "grid-cols-2 md:grid-cols-2 max-w-2xl mx-auto" 
                               : "grid-cols-1 md:grid-cols-3"
@@ -352,7 +353,7 @@ export function EventSchedule() {
               {selectedEvent.type === "feira" && (
                 <div className="mt-6 p-4 text-center rounded-lg">
                   <h3 className="text-xl font-bold mb-4">Empresas Participantes</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 overflow-y-auto max-h-[450px] mx-auto">
                     {selectedEvent.day === "wednesday" ? sponsorsWednesday.sponsors.slice(0, 10).map((sponsor) => (
                       <div key={sponsor.name} className="flex flex-col items-center justify-center p-3 md:p-4 hover:shadow-lg border-gray-100 bg-gray-600 bg-opacity-10 shadow-[11px_9px_10px_1px_rgba(0,_0,_0,_0.1)] bg-clip-padding backdrop-blur-xl backdrop-filter rounded-lg border">
                         <img

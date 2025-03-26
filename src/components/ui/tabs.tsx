@@ -64,14 +64,14 @@ export const Tabs = ({
     }
   }
 
-  useEffect(() => {
-    if (tabsRef.current) {
-      const activeTab = tabsRef.current.querySelector(`[data-active="true"]`)
-      if (activeTab) {
-        activeTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
-      }
-    }
-  }, [active])
+  // useEffect(() => {
+  //   if (tabsRef.current) {
+  //     const activeTab = tabsRef.current.querySelector(`[data-active="true"]`)
+  //     if (activeTab) {
+  //       activeTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
+  //     }
+  //   }
+  // }, [active])
 
   useEffect(() => {
     // Find the scrollable element from the ScrollArea component
@@ -97,7 +97,7 @@ export const Tabs = ({
       <div className="relative w-full">
         {/* Left scroll indicator */}
         {showLeftArrow && (
-          <div className="absolute left-0 top-8 -translate-y-1/2 z-10 bg-gradient-to-r from-background dark:from-black to-transparent pr-2 h-16 flex items-center">
+          <div className="absolute left-0 top-8 -translate-y-1/2 z-10 dark:from-black to-transparent pr-2 h-16 flex items-center">
             <button 
               onClick={scrollLeft} 
               className="p-1 rounded-full bg-gray-200 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 transition-colors"
@@ -110,7 +110,7 @@ export const Tabs = ({
         
         {/* Right scroll indicator */}
         {showRightArrow && (
-          <div className="absolute right-0 top-8 -translate-y-1/2 z-10 bg-gradient-to-l from-background dark:from-black to-transparent pl-2 h-16 flex items-center">
+          <div className="absolute right-0 top-8 -translate-y-1/2 z-10 dark:from-black to-transparent pl-2 h-16 flex items-center">
             <button 
               onClick={scrollRight} 
               className="p-1 rounded-full bg-gray-200 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 transition-colors"

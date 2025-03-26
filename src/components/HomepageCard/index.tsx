@@ -5,14 +5,26 @@ import { useMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-// 
-
 export const HomepageCard = () => {
   const forms_url = "https://forms.gle/G2USdGq1XtKdcTaR9";
   const eventLines = eventDescription.split("\n");
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useMobile();
 
+
+  const handleClick = () => {
+    const element = document.getElementById("horario");
+    const scroller = document.getElementById("main");
+    if (element) {
+      const elementTop = element.offsetTop;
+      console.log(elementTop);
+      scroller?.scrollTo({
+        top: elementTop,
+        behavior: "smooth"
+      });
+    }
+  };
+  
   return (
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
@@ -74,8 +86,8 @@ export const HomepageCard = () => {
           >
           Schedule
         </Button> */}
-          <Button asChild className="w-fit px-8 h-full text-2xl font-bold text-background bg-lime-500 hover:bg-lime-600">
-            <a href={forms_url} target="_blank" rel="noopener noreferrer">Submeter CV</a>
+          <Button className="w-fit px-8 h-full text-2xl font-bold text-background bg-gray-900 hover:bg-gray-800" onClick={handleClick}>
+            Horário
           </Button>
         </motion.div>
       </div>
