@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 export const HomepageCard = () => {
-  const forms_url = "https://forms.gle/G2USdGq1XtKdcTaR9";
   const eventLines = eventDescription.split("\n");
   const [isExpanded, setIsExpanded] = useState(false);
   const isMobile = useMobile();
